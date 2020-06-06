@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+        h1 {
+            color: firebrick;
+            font-size: 18px;
+        }
+        
+        h2 {
+            color: firebrick;
+            font-size: 15px;
+        }
+        
+        #mousePositions {
+            border: solid #000000 1px;
+            color: #000000;
+            background-color: deepskyblue;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 11px;
+            height: 20px;
+            overflow: auto;
+            width: 150px;
+        }
+        
+        #clickPositions {
+            border: solid #000000 1px;
+            color: #000000;
+            background-color: darksalmon;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 11px;
+            height: 150px;
+            overflow: auto;
+            width: 150px;
+            margin-top: 10px;
+        }
+    </style>
+
+    <script language="javascript" type="text/javascript">
+        function position(event) {
+            var x = event.clientX;
+            var y = event.clientY;
+            var mousePositions = document.getElementById('mousePositions');
+            mousePositions.innerHTML = 'X coords: ' + x + ', Y coords: ' + y;
+        }
+
+        function grabar(event) {
+            var x = event.clientX;
+            var y = event.clientY;
+            var text = document.createTextNode('\n X coords: ' + x + ', Y coords: ' + y);
+            document.getElementById('clickPositions').appendChild(text);
+        }
+
+        function resete() {
+            location.reload();
+            //document.getElementById("clickPositions").reset();
+        }
+    </script>
+
+    <title>MousePosition</title>
+
+</head>
+
+<body onclick="grabar(event);" onmousemove="position(event);">
+    <h1>CAPTURADOR</h1>
+    <H2>de coordenadas</H2>
+    <div id="mousePositions">
+
+    </div>
+    <div id="clickPositions">
+
+
+    </div>
+    <p><input type="button" value="Resetear" onclick="resete();" /></p>
+</body>
+
+</html>
